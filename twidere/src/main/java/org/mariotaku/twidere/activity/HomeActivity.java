@@ -109,8 +109,7 @@ import org.mariotaku.twidere.view.TabPagerIndicator;
 import java.util.Collections;
 import java.util.List;
 
-public class HomeActivity extends BaseActivity implements OnClickListener, OnPageChangeListener,
-        SupportFragmentCallback, OnLongClickListener, DrawerLayout.DrawerListener {
+public class HomeActivity extends BaseActivity implements OnClickListener, OnPageChangeListener, SupportFragmentCallback, OnLongClickListener, DrawerLayout.DrawerListener {
     private static final int[] HOME_AS_UP_ATTRS = {android.support.v7.appcompat.R.attr.homeAsUpIndicator};
 
     private final Handler mHandler = new Handler();
@@ -364,6 +363,7 @@ public class HomeActivity extends BaseActivity implements OnClickListener, OnPag
         super.onCreate(savedInstanceState);
         mMultiSelectHandler = new MultiSelectEventHandler(this);
         mMultiSelectHandler.dispatchOnCreate();
+
         if (!DataStoreUtils.hasAccount(this)) {
             final Intent signInIntent = new Intent(INTENT_ACTION_TWITTER_LOGIN);
             signInIntent.setClass(this, SignInActivity.class);
@@ -374,6 +374,7 @@ public class HomeActivity extends BaseActivity implements OnClickListener, OnPag
             notifyAccountsChanged();
         }
         final Intent intent = getIntent();
+        //是否需要进行toolbar的设置
         if (openSettingsWizard()) {
             finish();
             return;
@@ -390,9 +391,8 @@ public class HomeActivity extends BaseActivity implements OnClickListener, OnPag
 
         mTabColumns = getResources().getInteger(R.integer.default_tab_columns);
 
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open_accounts_dashboard,
-                R.string.close_accounts_dashboard);
-        mHomeContent.setOnFitSystemWindowsListener(this);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open_accounts_dashboard, R.string.close_accounts_dashboard);
+        mHomeContent.setOnFitSystemWindowsListener(this);//
         mPagerAdapter = new SupportTabsAdapter(this, getSupportFragmentManager(), mTabIndicator, mTabColumns);
         mViewPager.setAdapter(mPagerAdapter);
         mTabIndicator.setViewPager(mViewPager);

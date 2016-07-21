@@ -171,12 +171,10 @@ public class TwidereApplication extends Application implements Constants,
                 new IconActionButtonTagProcessor(IconActionButtonTagProcessor.PREFIX_COLOR_DISABLED));
         ATE.registerTagProcessor(ThemedMultiValueSwitch.PREFIX_TINT, new ThemedMultiValueSwitch.TintTagProcessor());
 
-
         mProfileImageViewViewProcessor.setStyle(Utils.getProfileImageStyle(preferences));
         mFontFamilyTagProcessor.setFontFamily(ThemeUtils.getThemeFontFamily(preferences));
 
-        final int themeColor = preferences.getInt(KEY_THEME_COLOR, ContextCompat.getColor(this,
-                R.color.branding_color));
+        final int themeColor = preferences.getInt(KEY_THEME_COLOR, ContextCompat.getColor(this, R.color.branding_color));
         if (!ATE.config(this, VALUE_THEME_NAME_LIGHT).isConfigured()) {
             //noinspection WrongConstant
             ATE.config(this, VALUE_THEME_NAME_LIGHT)

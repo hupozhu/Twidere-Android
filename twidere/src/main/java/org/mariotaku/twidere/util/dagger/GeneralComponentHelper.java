@@ -31,6 +31,7 @@ public class GeneralComponentHelper {
     private GeneralComponentHelper() {
     }
 
+    //创建GeneralComponent
     @NonNull
     public static GeneralComponent build(@NonNull Context context) {
         if (sGeneralComponent != null) return sGeneralComponent;

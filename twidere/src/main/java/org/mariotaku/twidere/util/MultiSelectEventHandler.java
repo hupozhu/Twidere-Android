@@ -54,8 +54,7 @@ import java.util.TreeSet;
 import javax.inject.Inject;
 
 @SuppressLint("Registered")
-public class MultiSelectEventHandler implements Constants, ActionMode.Callback,
-        MultiSelectManager.Callback {
+public class MultiSelectEventHandler implements Constants, ActionMode.Callback, MultiSelectManager.Callback {
 
     @Inject
     AsyncTwitterWrapper mTwitterWrapper;
@@ -72,6 +71,7 @@ public class MultiSelectEventHandler implements Constants, ActionMode.Callback,
     public static final int MENU_GROUP = 201;
 
     public MultiSelectEventHandler(final BaseActivity activity) {
+        //在组件中注册MultiSelect
         GeneralComponentHelper.build(activity).inject(this);
         mActivity = activity;
     }

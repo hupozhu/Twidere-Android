@@ -61,8 +61,7 @@ public class SupportTabsAdapter extends SupportFixedFragmentStatePagerAdapter im
         this(context, fm, indicator, 1);
     }
 
-    public SupportTabsAdapter(final Context context, final FragmentManager fm, final PagerIndicator indicator,
-                              final int columns) {
+    public SupportTabsAdapter(final Context context, final FragmentManager fm, final PagerIndicator indicator, final int columns) {
         super(fm);
         mContext = context;
         mIndicator = indicator;
